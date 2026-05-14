@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Rozana I M — Portfolio</title>
+<meta name="description" content="Rozana I M — MCA Graduate | Cloud & DevOps Engineer | Open to Opportunities"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06090f;
+  --surface:#0e1117;
+  --surface2:#141b24;
+  --surface3:#1a2230;
+  --border:rgba(255,255,255,.07);
+  --border-hover:rgba(183,148,255,.4);
+  --text:#eeeaf8;
+  --muted:#8891aa;
+  --muted2:#4f566a;
+  --rose:#e8a0bf;
+  --violet:#b794f4;
+  --teal:#5eead4;
+  --gold:#e2c27d;
+  --grad:linear-gradient(135deg,var(--rose),var(--violet));
+  --radius:16px;
+  --maxw:1080px;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+}
+.light{
+  --bg:#f4f2ef;
+  --surface:#ffffff;
+  --surface2:#eeeae4;
+  --surface3:#e6e1d8;
+  --border:rgba(0,0,0,.08);
+  --border-hover:rgba(120,60,200,.28);
+  --text:#12101e;
+  --muted:#4a4768;
+  --muted2:#a09dc0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-b);font-size:15px;line-height:1.72;
+  background:var(--bg);color:var(--text);
+  transition:background .4s,color .4s;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* NOISE */
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* MESH */
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-mesh span{position:absolute;border-radius:50%;filter:blur(120px);animation:drift 22s ease-in-out infinite alternate}
+.bg-mesh span:nth-child(1){width:640px;height:640px;background:var(--violet);top:-140px;left:-180px;opacity:.07;animation-duration:24s}
+.bg-mesh span:nth-child(2){width:520px;height:520px;background:var(--rose);top:38%;right:-120px;opacity:.06;animation-duration:19s;animation-delay:-8s}
+.bg-mesh span:nth-child(3){width:440px;height:440px;background:var(--teal);bottom:-60px;left:28%;opacity:.05;animation-duration:28s;animation-delay:-14s}
+.bg-mesh span:nth-child(4){width:300px;height:300px;background:var(--gold);top:60%;left:10%;opacity:.04;animation-duration:32s;animation-delay:-5s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(45px,35px) scale(1.12)}}
+.light .bg-mesh span{opacity:.04!important}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:1}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+
+/* NAV */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(6,9,15,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.light header{background:rgba(244,242,239,.82)}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 30px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:var(--font-d);font-size:1.3rem;font-weight:600;letter-spacing:.02em;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+nav{display:flex;align-items:center;gap:2px}
+nav a{
+  padding:7px 12px;border-radius:8px;
+  font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s,background .2s;
+}
+nav a:hover{color:var(--text);background:var(--surface2)}
+.theme-btn{
+  margin-left:8px;width:36px;height:36px;border-radius:8px;
+  border:1px solid var(--border);background:var(--surface2);
+  color:var(--text);cursor:pointer;font-size:.95rem;
+  display:grid;place-items:center;transition:.2s;
+}
+.theme-btn:hover{border-color:var(--border-hover)}
+
+/* HERO */
+.hero{
+  padding:96px 0 80px;
+  display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--border);border-radius:999px;
+  padding:6px 16px;margin-bottom:26px;background:var(--surface);
+}
+.hero-tag::before{
+  content:'';width:7px;height:7px;border-radius:50%;
+  background:var(--teal);box-shadow:0 0 10px var(--teal);
+  animation:blink 2.2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:var(--font-d);font-size:clamp(2.8rem,5vw,4.4rem);
+  font-weight:300;line-height:1.06;letter-spacing:-.01em;margin-bottom:8px;
+}
+.hero h1 em{
+  font-style:italic;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{font-size:.88rem;color:var(--muted);margin-bottom:22px;letter-spacing:.02em}
+.hero-bio{font-size:.94rem;color:var(--muted);max-width:680px;line-height:1.95;margin-bottom:40px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;
+  background:var(--grad);color:#fff;font-size:.84rem;font-weight:600;letter-spacing:.02em;
+  border:none;cursor:pointer;transition:.25s;
+}
+.btn-primary:hover{opacity:.86;transform:translateY(-2px);box-shadow:0 10px 30px rgba(183,148,255,.28)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--muted);font-size:.84rem;font-weight:500;cursor:pointer;transition:.25s;
+}
+.btn-ghost:hover{border-color:var(--border-hover);color:var(--text);transform:translateY(-2px)}
+
+/* PHOTO */
+.hero-photo{
+  width:220px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);position:relative;flex-shrink:0;
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+.hero-photo::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(160deg,rgba(183,148,255,.12),rgba(232,160,191,.08));
+  border-radius:20px;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+
+/* SECTIONS */
+section{padding:72px 0}
+section+section{border-top:1px solid var(--border)}
+.section-label{
+  font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:10px;
+}
+.section-title{
+  font-family:var(--font-d);font-size:clamp(1.9rem,3vw,2.8rem);
+  font-weight:300;letter-spacing:-.01em;margin-bottom:12px;
+}
+.section-line{
+  width:48px;height:2px;background:var(--grad);border-radius:2px;margin-bottom:36px;
+}
+
+/* CARDS */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px 28px;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.card:hover{
+  border-color:var(--border-hover);
+  box-shadow:0 16px 50px rgba(183,148,255,.1);
+  transform:translateY(-3px);
+}
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr 1fr}
+
+/* EDUCATION */
+.edu-row{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.edu-row h3{font-family:var(--font-d);font-size:1.22rem;font-weight:600;margin-bottom:5px}
+.edu-row p{font-size:.87rem;color:var(--muted);margin-top:2px}
+.edu-row .hi{font-size:.84rem;color:var(--teal);font-weight:500;margin-top:4px}
+.pill-yr{
+  flex-shrink:0;font-size:.72rem;font-weight:500;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;white-space:nowrap;
+  background:var(--surface2);
+}
+
+/* PROJECTS */
+.proj-type{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
+.proj-card h3{font-family:var(--font-d);font-size:1.2rem;font-weight:600;margin-bottom:10px;line-height:1.3}
+.proj-card p{font-size:.87rem;color:var(--muted);line-height:1.78;margin-bottom:18px}
+.proj-links{display:flex;flex-wrap:wrap;gap:8px}
+.proj-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.75rem;font-weight:500;padding:6px 13px;border-radius:8px;
+  border:1px solid var(--border);color:var(--muted);background:var(--surface2);transition:.22s;
+}
+.proj-link:hover{border-color:var(--border-hover);color:var(--text);background:var(--surface3)}
+.proj-link svg{width:13px;height:13px;flex-shrink:0}
+a.proj-wrap{display:block;border-radius:var(--radius);color:inherit;text-decoration:none}
+a.proj-wrap:hover .card{
+  border-color:var(--border-hover);
+  box-shadow:0 16px 50px rgba(183,148,255,.1);
+  transform:translateY(-3px);
+}
+a.proj-wrap .proj-card h3::after{content:' ↗';opacity:0;transition:.25s}
+a.proj-wrap:hover .proj-card h3::after{opacity:.7}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}
+.skill-group h4{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:12px}
+.pill-list{display:flex;flex-wrap:wrap;gap:7px}
+.skill-pill{
+  font-size:.79rem;color:var(--muted);border:1px solid var(--border);border-radius:8px;
+  padding:5px 12px;background:var(--surface2);transition:.22s;
+}
+.skill-pill:hover{border-color:var(--border-hover);color:var(--text)}
+
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cert-card{display:flex;flex-direction:column;gap:10px}
+.cert-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(226,194,125,.25);border-radius:999px;
+  padding:4px 12px;background:rgba(226,194,125,.06);width:fit-content;
+}
+.cert-card h3{font-family:var(--font-d);font-size:1.15rem;font-weight:600;line-height:1.3}
+.cert-card p{font-size:.85rem;color:var(--muted);line-height:1.72;flex:1}
+.cert-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.8rem;font-weight:600;color:var(--rose);
+  border:1px solid rgba(232,160,191,.25);border-radius:8px;
+  padding:7px 14px;background:rgba(232,160,191,.06);
+  transition:.22s;width:fit-content;
+}
+.cert-link:hover{color:var(--violet);border-color:rgba(183,148,255,.35);background:rgba(183,148,255,.08)}
+
+/* ACHIEVEMENTS */
+.ach-list{list-style:none}
+.ach-list li{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--border);
+  font-size:.9rem;color:var(--muted);
+}
+.ach-list li:last-child{border-bottom:none}
+.ach-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+
+/* SOFT SKILLS */
+.soft-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.soft-item{
+  display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);
+  padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);transition:.22s;
+}
+.soft-item:hover{border-color:var(--border-hover);color:var(--text)}
+.soft-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0}
+
+/* CONTACT */
+.contact-links{display:flex;flex-wrap:wrap;gap:10px}
+.contact-link{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 20px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:.87rem;color:var(--muted);transition:.25s;
+}
+.contact-link:hover{border-color:var(--border-hover);color:var(--text);transform:translateY(-2px);box-shadow:0 8px 24px rgba(183,148,255,.1)}
+
+/* FOOTER */
+footer{text-align:center;padding:32px 0;font-size:.78rem;color:var(--muted2);border-top:1px solid var(--border)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:64px 0 52px}
+  .hero-photo{width:160px;margin:0 auto}
+  .grid-2,.skills-grid,.cert-grid,.soft-grid{grid-template-columns:1fr}
+  nav a{display:none}
+}
+@media(max-width:500px){
+  .container{padding:0 18px}
+  .card{padding:20px}
+  .edu-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"><span></span><span></span><span></span><span></span></div>
+<div class="wrap">
+
+<!-- NAV -->
+<header>
+  <div class="nav-inner">
+    <span class="nav-logo">Rozana I M</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certs</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero reveal">
+    <div>
+      <div class="hero-tag">Open to Cloud &amp; DevOps Roles</div>
+      <h1><em>Rozana</em><br>I M</h1>
+      <p class="hero-sub">MCA Graduate &nbsp;·&nbsp; Cloud &amp; DevOps Engineer &nbsp;·&nbsp; Bangalore, India</p>
+      <p class="hero-bio">
+        AWS Certified Cloud & DevOps Engineer with proven experience architecting, deploying, and automating scalable cloud infrastructure on AWS, containerized workloads, and end-to-end CI/CD pipelines. Demonstrated expertise across core DevOps disciplines including infrastructure-as-code (Terraform), container orchestration (EKS + Helm), and GitOps-driven delivery (Argo CD). Core strengths lie in building secure, highly available systems and embedding quality at every stage through DevSecOps practices — integrating SonarQube, Trivy, and OWASP into delivery workflows. A detail-oriented engineer who takes initiative to implement best-in-class automation, observability, and operational standards. Holds dual AWS certifications: Solutions Architect – Associate , Cloud and Devops Practitioner.      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://drive.google.com/file/d/14zR0Ax1BMExae9KSblxqitpe4-MSACeS/view?usp=sharing" target="_blank">
+          <span>↓</span> Download Resume
+        </a>
+        <a class="btn-ghost" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://drive.google.com/thumbnail?id=1MJBzLjAsXJfj5hIdJQBdk91kdF0cR5oV&sz=w600" alt="Rozana I M"/>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container reveal">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="section-line"></div>
+    <div class="card">
+      <p style="color:var(--muted);margin-bottom:14px;font-size:.95rem">I am an MCA student with strong interest in AWS Cloud and infrastructure technologies. I am currently gaining hands-on experience at Tata Strive with services like EC2, VPC, IAM, and secure VPN setup.</p>
+      <p style="color:var(--muted);margin-bottom:14px;font-size:.95rem">I enjoy building projects that integrate cloud, networking, and Linux-based systems. Alongside cloud, I have working knowledge of Python, SQL, React.js, and web technologies, which help me understand application workflows in cloud environments. I am a quick learner with good problem-solving skills and a strong willingness to adapt to new technologies.</p>
+      <p style="color:var(--muted);font-size:.95rem">I am actively seeking entry-level opportunities as a Cloud Engineer or DevOps Engineer where I can learn, contribute, and grow professionally.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container reveal">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="section-line"></div>
+    <div class="grid">
+      <div class="card"><div class="edu-row"><div><h3>MCA</h3><p>CMR Institute of Technology, Bengaluru</p><p>VTU Belagavi</p><p class="hi"></p></div><span class="pill-yr">2023 – 2025</span></div></div>
+      <div class="card"><div class="edu-row"><div><h3>BCA</h3><p>PES College of Arts &amp; Science, Mandya</p><p>University of Mysore</p><p class="hi">CGPA: 8.75</p></div><span class="pill-yr">2020 – 2023</span></div></div>
+      <div class="card"><div class="edu-row"><div><h3>PUC (Commerce)</h3><p>Government PU College for Girls, Mandya</p><p class="hi">81.83%</p></div><span class="pill-yr">2019 – 2020</span></div></div>
+      <div class="card"><div class="edu-row"><div><h3>Secondary Education</h3><p>Abhinava Bharathi Vidya Kendra High School, Mandya</p><p class="hi">83.36%</p></div><span class="pill-yr">2017 – 2018</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container reveal">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+    <div class="grid">
+      
+      <!-- LUCCI -->
+      <div class="card proj-card">
+        <div class="proj-type">DevOps &amp; Frontend &nbsp;·&nbsp; AWS · React.js · Microservices</div>
+        <h3>LUCCI – E-Commerce Platform</h3>
+        <p>Containerized Node.js + Express.js microservices with Docker, ensuring consistent deployments across dev, staging, and production environments. Built end-to-end Jenkins CI/CD pipelines automating build, test, and deploy stages, reducing manual deployment effort by ~60%. Deployed on AWS EC2 with custom domain routing (rozana-projects.online) via Amazon Route 53 and Nginx as a reverse proxy for API routing and SSL termination. Integrated Razorpay payment gateway with secure REST APIs, JWT-based authentication, and CORS policies for production-grade security. Configured MySQL on AWS RDS for reliable, scalable data storage and diagnosed real-world HTTP errors (403, 404, 504) to improve application uptime and system reliability.</p>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/frontend-aws-devops.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Frontend</a>
+          <a class="proj-link" href="https://github.com/rozana09/user-service.git" target="_blank">User Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/order-service.git" target="_blank">Order Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/product-service.git" target="_blank">Product Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/payment-service.git" target="_blank">Payment Service</a>
+        </div>
+
+
+      </div>  <!-- Tetris Game -->
+      <div class="card proj-card">
+        <div class="proj-type">DevOps &amp; Frontend &nbsp;·&nbsp; AWS · React.js · Microservices</div>
+        <h3>Tetris on the Cloud – DevSecOps Pipeline with Kubernetes + Terraform + GitOps </h3>
+        <p>Provisioned Jenkins server on AWS EC2 using Terraform IaC; configured full DevSecOps pipeline with SonarQube, OWASP, and Trivy for code and container vulnerability scanning. Built Jenkins CI/CD pipeline to build, tag, and push dual-version Docker images to DockerHub; automated image update in deployment repo via pipeline scripting. Created EKS cluster using Terraform via Jenkins pipeline; deployed both app versions using Argo CD GitOps with automated sync from GitHub manifest repository. </p>    
+          <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/frontend-aws-devops.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Frontend</a>
+          <a class="proj-link" href="https://github.com/rozana09/user-service.git" target="_blank">User Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/order-service.git" target="_blank">Order Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/product-service.git" target="_blank">Product Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/payment-service.git" target="_blank">Payment Service</a>
+        </div>
+      </div>
+      
+      <!-- 10 microservices -->
+      <div class="card proj-card">
+        <div class="proj-type">DevOps &amp; Frontend &nbsp;·&nbsp; AWS · React.js · Microservices</div>
+        <h3>Cloud Conductor: 10 Microservices on EKS with Jenkins CI/CD</h3>
+        <p>Launched AWS EC2 base server and provisioned EKS cluster with managed node groups using eksctl; configured OIDC provider, RBAC roles, service accounts, and secret tokens for secure Jenkins-Kubernetes integration. Built a Jenkins multibranch CI/CD pipeline with GitHub webhook triggers to automatically build, push Docker images, and deploy 10 microservices to EKS cluster under a dedicated namespace. Configured kubectl, AWS CLI, Docker, and Jenkins via automated shell scripts; exposed services via AWS Load Balancer for production access.</p>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/frontend-aws-devops.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Frontend</a>
+          <a class="proj-link" href="https://github.com/rozana09/user-service.git" target="_blank">User Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/order-service.git" target="_blank">Order Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/product-service.git" target="_blank">Product Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/payment-service.git" target="_blank">Payment Service</a>
+        </div>
+      </div>
+
+        <!-- Netflix clone -->
+      <div class="card proj-card">
+        <div class="proj-type">DevOps &amp; Frontend &nbsp;·&nbsp; AWS · React.js · Microservices</div>
+        <h3>Netflix Clone – DevSecOps CI/CD Pipeline</h3>
+        <p>Provisioned production-grade Amazon EKS cluster with autoscaling; defined full infrastructure using Terraform (VPC, node groups, networking); packaged Kubernetes resources as Helm charts. Built end-to-end Jenkins CI/CD pipeline automating build, test, security scanning (SonarQube + Trivy), Docker image creation, and Kubernetes deployment. Implemented GitOps delivery with Argo CD; configured Prometheus + Grafana observability stack with real-time Slack notifications.</p>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/frontend-aws-devops.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Frontend</a>
+          <a class="proj-link" href="https://github.com/rozana09/user-service.git" target="_blank">User Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/order-service.git" target="_blank">Order Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/product-service.git" target="_blank">Product Service</a>
+          <a class="proj-link" href="https://github.com/rozana09/payment-service.git" target="_blank">Payment Service</a>
+        </div>
+      </div>  
+
+      <!-- OpenVPN — clickable card -->
+      <a class="proj-wrap" href="https://github.com/rozana09/OpenVPN-AWS.git" target="_blank">
+        <div class="card proj-card">
+          <div class="proj-type">AWS Cloud Project</div>
+          <h3>Secure OpenVPN Deployment on AWS</h3>
+          <p>Configured a secure VPN on AWS EC2 with PKI-based authentication, providing private access to cloud resources inside a VPC. Managed certificates with Easy-RSA and Tunnelblick.</p>
+          <div class="proj-links"><span class="proj-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>View Repository</span></div>
+        </div>
+      </a>
+
+      <!-- Focus Bubble -->
+      <div class="card proj-card">
+        <div class="proj-type">MCA Main Project &nbsp;·&nbsp; Python</div>
+        <h3>FOCUS BUBBLE – Productivity App</h3>
+        <p>Built a productivity assistant app that improves user focus using structured reminders and motivational prompts.</p>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/Focus-Bubble-Frontend.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Frontend Repo</a>
+          <a class="proj-link" href="https://github.com/rozana09/Focus-Bubble-backend.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>Backend Repo</a>
+        </div>
+      </div>
+
+      <!-- Handwritten — NOT a link wrapper -->
+      <div class="card proj-card">
+        <div class="proj-type">Research &amp; Python Project</div>
+        <h3>Efficient Handwritten Text Recognition</h3>
+        <p>Offline handwritten text recognition using Python, TensorFlow, ResNet, BiLSTM. Published a Springer research paper on combining Residual Networks with BiLSTM for improved sequential understanding.</p>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/rozana09/Handwritten-to-text-converter.git" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>View Repository</a>
+          <a class="proj-link" href="https://link.springer.com/chapter/10.1007/978-3-031-97713-8_4" target="_blank">📄 Springer Paper</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container reveal">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="section-line"></div>
+    <div class="card">
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Cloud</h4>
+          <div class="pill-list">
+            <span class="skill-pill">AWS EC2</span><span class="skill-pill">AWS VPC</span>
+            <span class="skill-pill">AWS IAM</span><span class="skill-pill">AWS S3</span>
+            <span class="skill-pill">Route 53</span><span class="skill-pill">RDS</span>
+            <span class="skill-pill">CloudFront</span><span class="skill-pill">Auto Scaling</span>
+            <span class="skill-pill">ECR</span><span class="skill-pill">EKS</span>
+            <span class="skill-pill">CloudFormation</span><span class="skill-pill">AWS S3</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Containers &amp; Orchestration</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Docker</span><span class="skill-pill">Kubernetes</span>
+            <span class="skill-pill">Helm</span><span class="skill-pill">Argo CD</span>
+          </div>
+          </div>
+          <div class="skill-group">
+          <h4>CI/CD &amp; IaC</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Jenkins</span><span class="skill-pill">Terraform</span>
+            <span class="skill-pill">GitHub Actions</span><span class="skill-pill">GitL</span>
+            <span class="skill-pill">Bash Scripting</span>
+          </div>
+          </div>
+          <div class="skill-group">
+          <h4>Observability &amp; Monitoring</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Grafana</span><span class="skill-pill">Prometheus</span>
+            <span class="skill-pill">Node Exporter</span><span class="skill-pill">CloudWatch</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Messaging &amp; Streaming</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Apache Kafka</span><span class="skill-pill">ZooKeeper</span>
+            <span class="skill-pill">Brokers</span><span class="skill-pill">Cluster Management </span>
+          </div>
+        </div>
+          <div class="skill-group">
+          <h4>DevSecOps &amp; Security</h4>
+          <div class="pill-list">
+            <span class="skill-pill">SonarQube</span><span class="skill-pill">Trivy</span>
+            <span class="skill-pill">OWASP Dependency Check</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Programming, Web &amp; Databases</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Python</span><span class="skill-pill">SQL</span>
+            <span class="skill-pill">HTML</span><span class="skill-pill">CSS</span>
+            <span class="skill-pill">React.js</span><span class="skill-pill">Node.js</span>
+            <span class="skill-pill">SQL</span><span class="skill-pill">PostgreSQL</span>
+
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>OS &amp; Tools</h4>
+          <div class="pill-list">
+            <span class="skill-pill">Linux (Ubuntu)</span><span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span><span class="skill-pill">Cyberduck</span>
+            <span class="skill-pill">GitHub</span><span class="skill-pill">Cyberduck</span>
+            <span class="skill-pill">GitHub</span><span class="skill-pill">Cyberduck</span>
+
+            <span class="skill-pill">Tunnelblick</span><span class="skill-pill">MS Office</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container reveal">
+    <div class="section-label">Highlights</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="section-line"></div>
+    <div class="card">
+      <ul class="ach-list">
+        <li>
+          <span class="ach-icon">📄</span>
+          <span>Published a Springer research paper on <strong style="color:var(--text)">Efficient Handwritten Text Recognition</strong> using Residual Networks and BiLSTM.
+            &nbsp;<a href="https://link.springer.com/chapter/10.1007/978-3-031-97713-8_4" target="_blank" style="color:var(--rose);font-weight:600">View Publication ↗</a>
+          </span>
+        </li>
+        <li>
+          <span class="ach-icon">☁️</span>
+          <span>Completed hands-on AWS Cloud projects including secure networking, VPN setup, and microservices deployment during Tata Strive and NexGen training.</span>
+        </li>
+        <li>
+          <span class="ach-icon">🏅</span>
+          <span>Earned AWS Certified Solutions Architect – Associate and AWS Certified Cloud Practitioner certifications.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SOFT SKILLS -->
+<section id="soft-skills">
+  <div class="container reveal">
+    <div class="section-label">Interpersonal</div>
+    <h2 class="section-title">Soft Skills</h2>
+    <div class="section-line"></div>
+    <div class="card">
+      <div class="soft-grid">
+        <div class="soft-item"><span class="soft-dot"></span>Problem-Solving</div>
+        <div class="soft-item"><span class="soft-dot"></span>Team Collaboration &amp; Adaptability</div>
+        <div class="soft-item"><span class="soft-dot"></span>Effective Communication</div>
+        <div class="soft-item"><span class="soft-dot"></span>Time Management &amp; Organization</div>
+        <div class="soft-item"><span class="soft-dot"></span>Quick Learner &amp; Self-Motivated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container reveal">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <div class="section-line"></div>
+    <div class="cert-grid">
+
+      <div class="card cert-card">
+        <div class="cert-badge">☁️ AWS</div>
+        <h3>AWS Certified Solutions Architect – Associate</h3>
+        <p>Designing distributed systems and cloud architectures on AWS, covering EC2, VPC, IAM, S3, and core infrastructure services.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/1jXolXxbljovQpe0VhHy6WtNldoUqjUyY/view?usp=sharing" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+      <div class="card cert-card">
+        <div class="cert-badge">☁️ AWS</div>
+        <h3>AWS Certified Cloud Practitioner</h3>
+        <p>Foundational AWS certification validating knowledge of core cloud concepts, services, security, architecture, pricing, and support.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/1A_S4ximlF3Zm6b0RbIN_5HL9qwlAuszG/view?usp=drive_link" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+      <div class="card cert-card">
+        <div class="cert-badge">☁️ AWS</div>
+        <h3>AWS Cloud Practitioner Training </h3>
+        <p>Completed hands-on AWS Cloud training at Tata Strive covering core services including EC2, VPC, IAM, S3, and secure network configuration. Gained practical experience deploying cloud infrastructure and setting up VPN connectivity on AWS.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/1B_xyvbnHz9jBdhBTxO4t6BZz2FfJEgN8/view?usp=sharing" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+      <div class="card cert-card">
+        <div class="cert-badge">☁️ AWS &amp; DevOps</div>
+        <h3>AWS DevOps Engineering Training </h3>
+        <p>Completed AWS and DevOps engineering training at Nexgen covering CI/CD pipelines, containerization with Docker, Kubernetes orchestration, and infrastructure automation using Terraform. Gained hands-on experience with Jenkins, Argo CD, and DevSecOps practices including SonarQube, Trivy, and OWASP.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/14L-zSc_LEcbplpRIi5Apwi0Lr-0UcZfQ/view?usp=sharing" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+       <div class="card cert-card">
+        <div class="cert-badge">AI</div>
+        <h3>Introduction to Cloud & Cowork </h3>
+        <p>Completed Anthropic's introductory course on Claude AI and the Cowork desktop tool, covering AI-assisted workflows, prompt fundamentals, and automating file and task management for productivity.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/16Q80kbXlY_LQ37v4XlVinPae0s22IypG/view?usp=sharing" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+      <div class="card cert-card">
+        <div class="cert-badge">⚛️ Full Stack</div>
+        <h3>React, Node.js, Express &amp; MongoDB – MERN Full-Stack</h3>
+        <p>Comprehensive MERN stack certification covering frontend with React, backend with Node.js &amp; Express, and MongoDB database management.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/1yEfOlyK_peYFNdk2yKaeLm5B9cmtPGHR/view?usp=drive_link" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+      <div class="card cert-card">
+        <div class="cert-badge">📖 Springer</div>
+        <h3>Springer Publication Certificate</h3>
+        <p>Research publication on Efficient Handwritten Text Recognition Using Residual Networks and BiLSTM — combining deep learning models for superior sequential text understanding.</p>
+        <a class="cert-link" href="https://drive.google.com/file/d/1wwbyCRup2NGq5_FnalAxotOS_qPS7PPN/view?usp=sharing" target="_blank">📄 View Certificate ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+    <div class="card">
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:rozanaim09@gmail.com"><span>✉️</span> rozanaim09@gmail.com</a>
+        <a class="contact-link" href="tel:+917899523743"><span>📞</span> +91 7899523743</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/rozana-im-a63541302" target="_blank"><span style="font-weight:800;font-size:.9rem">in</span> LinkedIn</a>
+        <a class="contact-link" href="https://github.com/rozana09" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.44 7.86 10.97.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.79.55 4.56-1.53 7.85-5.86 7.85-10.97C23.5 5.74 18.27.5 12 .5z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Rozana I M &nbsp;·&nbsp; Bangalore, India</footer>
+
+</div>
+<script>
+const btn=document.getElementById('themeBtn');
+btn.addEventListener('click',()=>{
+  document.documentElement.classList.toggle('light');
+  btn.textContent=document.documentElement.classList.contains('light')?'☀️':'🌙';
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
